@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация — Сертификаты, паспорта УОГ | SorbGas</title>
+    <meta name="description" content="Документация на установки УОГ: сертификаты, заключения ЭПБ, технические паспорта, инструкции.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .docs-header {
+            padding: 160px 0 60px;
+            background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+            text-align: center;
+            color: white;
+        }
+        .docs-header h1 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        .docs-header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .docs-section {
+            margin-bottom: 60px;
+        }
+        .docs-section h3 {
+            color: #0066cc;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .docs-section h3::before {
+            content: '📄';
+            font-size: 1.5rem;
+        }
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .doc-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .doc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+        }
+        .doc-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0066cc 0%, #00aaff 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .doc-card h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .doc-card p {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        .doc-card .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 0.85rem;
+        }
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .certificate-item {
+            aspect-ratio: 3/4;
+            background: #f5f7fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+        .certificate-item:hover {
+            transform: scale(1.05);
+        }
+        .certificate-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <a href="tel:+78312808146">+7 (831) 280-81-46</a>
+                    <a href="mailto:info@sorbgaz.ru">info@sorbgaz.ru</a>
+                </div>
+                <div class="header-top-actions">
+                    <button class="lang-switcher">EN</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Sorb<span class="logo-accent">Gas</span></span>
+                    </a>
+                </div>
+                <button class="burger-menu" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav">
+                    <a href="about.html" class="nav-link">О технологии</a>
+                    <a href="products.html" class="nav-link">Продукция</a>
+                    <a href="comparison.html" class="nav-link">Сравнение</a>
+                    <a href="projects.html" class="nav-link">Проекты</a>
+<a href="production.html" class="nav-link">Производство/Реализованные проекты</a>
+                    <a href="documentation.html" class="nav-link">Документация</a>
+                    <a href="index.html#contacts" class="nav-link">Контакты</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="docs-header">
+        <div class="container">
+            <h1>Документация</h1>
+            <p>Сертификаты, технические паспорта и инструкции</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-page">
+        <div class="container">
+            
+            <!-- Certificates -->
+            <div class="docs-section">
+                <h3>Сертификаты соответствия</h3>
+                <div class="certificate-grid">
+                    <div class="certificate-item">
+                        <img src="reference/сертификаты УОГ/Сертификат 2015 г. стр1.jpg" alt="Сертификат стр.1">
+                    </div>
+                    <div class="certificate-item">
+                        <img src="reference/сертификаты УОГ/Сертификат 2015 г. стр2.jpg" alt="Сертификат стр.2">
+                    </div>
+                    <div class="certificate-item">
+                        <img src="reference/сертификаты УОГ/Сертификат 2015 г. стр3.jpg" alt="Сертификат стр.3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Documentation -->
+            <div class="docs-section">
+                <h3>Технические паспорта</h3>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">📋</div>
+                        <h4>Установка Очистки Газа (УОГ)</h4>
+                        <p>Общий технический паспорт установки</p>
+                        <a href="reference/ТКП УОГ/Установка Очистки Газа (УОГ).pdf" class="btn btn-outline" download>Скачать PDF</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📋</div>
+                        <h4>ТКП УОГ-2500</h4>
+                        <p>Технический паспорт УОГ-2500</p>
+                        <a href="reference/ТКП УОГ/ТКП УОГ-2500.pdf" class="btn btn-outline" download>Скачать PDF</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📋</div>
+                        <h4>ТКП фильтр ФГСМ</h4>
+                        <p>Паспорт на фильтр ФГСМ</p>
+                        <a href="reference/ТКП УОГ/ТКП фильтр ФГСМ.pdf" class="btn btn-outline" download>Скачать PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expert Conclusions -->
+            <div class="docs-section">
+                <h3>Заключения ЭПБ</h3>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">✅</div>
+                        <h4>Заключение экспертизы промышленной безопасности</h4>
+                        <p>Документ о соответствии требованиям промышленной безопасности</p>
+                        <a href="reference/сертификаты УОГ/заключение ЭПБ/" class="btn btn-outline">Открыть папку</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="docs-section">
+                <h3>Инструкции и описания</h3>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">📖</div>
+                        <h4>УОГ Технология и описание работы</h4>
+                        <p>Подробное описание технологии работы установки</p>
+                        <a href="reference/УОГ Технология и описание работы.doc" class="btn btn-outline" download>Скачать DOC</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📖</div>
+                        <h4>Описание УОГ-20</h4>
+                        <p>Модуль сероочистки для УОГ-20</p>
+                        <a href="reference/сероочистка модуль описание УОГ-20.doc" class="btn btn-outline" download>Скачать DOC</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📖</div>
+                        <h4>Описание УОГ-100</h4>
+                        <p>Модуль сероочистки для УОГ-100</p>
+                        <a href="reference/сероочистка модуль описание УОГ-100.doc" class="btn btn-outline" download>Скачать DOC</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📖</div>
+                        <h4>Описание УОГ-200</h4>
+                        <p>Модуль сероочистки для УОГ-200</p>
+                        <a href="reference/сероочистка модуль описание УОГ-200.doc" class="btn btn-outline" download>Скачать DOC</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📖</div>
+                        <h4>Описание УОГ-1500</h4>
+                        <p>Модуль сероочистки для УОГ-1500</p>
+                        <a href="reference/сероочистка модуль описание УОГ-1500.doc" class="btn btn-outline" download>Скачать DOC</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📖</div>
+                        <h4>Описание УОГ-1500ВД</h4>
+                        <p>Модуль сероочистки для УОГ-1500ВД (8 МПа)</p>
+                        <a href="reference/УОГ-1500ВД/сероочистка модуль описание УОГ-1500ВД.doc" class="btn btn-outline" download>Скачать DOC</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="index.html#contacts" class="btn btn-primary btn-lg">Запросить документацию</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Sorb<span class="logo-accent">Gas</span></span>
+                    <p>Установки очистки газа от сероводорода</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#about">О технологии</a>
+                    <a href="products.html">Продукция</a>
+                    <a href="index.html#contacts">Контакты</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SorbGas. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

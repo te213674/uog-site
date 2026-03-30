@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>УОГ — Установки очистки газа от сероводорода | SorbGas</title>
+    <meta name="description" content="Установки УОГ для очистки ПНГ и биогаза от сероводорода. Технология жидкофазного окисления.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <a href="tel:+78312808146">
+                        <span>📞</span>
+                        +7 (831) 280-81-46
+                    </a>
+                    <a href="mailto:info@sorbgaz.ru">
+                        <span>✉️</span>
+                        info@sorbgaz.ru
+                    </a>
+                </div>
+                <div class="header-top-actions">
+                    <button class="lang-switcher">EN</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Sorb<span class="logo-accent">Gas</span></span>
+                    </a>
+                </div>
+                <button class="burger-menu" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav">
+                    <a href="about.html" class="nav-link">О технологии</a>
+                    <a href="products.html" class="nav-link">Продукция</a>
+                    <a href="comparison.html" class="nav-link">Сравнение</a>
+                    <a href="projects.html" class="nav-link">Проекты</a>
+                    <a href="production.html" class="nav-link">Производство</a>
+                    <a href="documentation.html" class="nav-link">Документация</a>
+                    <a href="#contacts" class="nav-link">Контакты</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3D Canvas -->
+    <canvas id="moleculeCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.3;"></canvas>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Установки очистки газа от сероводорода <span class="highlight">УОГ</span></h1>
+                <p class="hero-subtitle">Технология жидкофазного окисления для ПНГ, свалочного газа и биогаза. Себестоимость очистки от 1,2 руб/нм³</p>
+                <div class="hero-buttons">
+                    <a href="#contacts" class="btn btn-primary btn-lg">Запросить КП</a>
+                    <a href="about.html" class="btn btn-secondary btn-lg">О технологии</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="stat-num">0,02%</span>
+                        <span class="stat-desc">глубина очистки</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-num">50-10000</span>
+                        <span class="stat-desc">нм³/час диапазон</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-num">8 МПа</span>
+                        <span class="stat-desc">макс. давление</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="reference/УОГ производство/УОГ 5000 готовая на площадке/5260698728849413433-1.jpg" alt="УОГ установка">
+                <div class="hero-links">
+                    <a href="products.html">Модельный ряд</a>
+                    <a href="comparison.html">Сравнение</a>
+                    <a href="projects.html">Проекты</a>
+                    <a href="production.html">Производство</a>
+                    <a href="documentation.html">Документация</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О технологии -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <a href="about.html" class="section-tag-link">Технология</a>
+                <h2>Жидкофазное окисление</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-text">
+                        Установка УОГ использует технологию жидкофазного окисления для очистки топливного газа 
+                        от серных соединений. В отличие от конкурентов с одноступенчатой очисткой, 
+                        УОГ применяет <strong>2-3 ступени очистки</strong>, что повышает надёжность установки.
+                    </p>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-num">01</div>
+                            <div class="step-content">
+                                <h4>Сепарация</h4>
+                                <p>Очистка от механических примесей и тяжёлых углеводородов</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-num">02</div>
+                            <div class="step-content">
+                                <h4>Сорбция H₂S</h4>
+                                <p>4 последовательные колонны поглощают сероводород</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-num">03</div>
+                            <div class="step-content">
+                                <h4>Регенерация</h4>
+                                <p>Каталитическое окисление до элементарной серы</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-num">04</div>
+                            <div class="step-content">
+                                <h4>Флотация</h4>
+                                <p>Отделение серы и возврат раствора в систему</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="visual-card">
+                        <h3>Преимущества технологии</h3>
+                        <ul class="advantages-list">
+                            <li>
+                                <span class="check">✓</span>
+                                <span>Нечувствительность к CO₂</span>
+                            </li>
+                            <li>
+                                <span class="check">✓</span>
+                                <span>Автоматическая подача раствора</span>
+                            </li>
+                            <li>
+                                <span class="check">✓</span>
+                                <span>Работа на низких давлениях</span>
+                            </li>
+                            <li>
+                                <span class="check">✓</span>
+                                <span>Регенерация без замены реагента</span>
+                            </li>
+                            <li>
+                                <span class="check">✓</span>
+                                <span>Отход — элементарная сера</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модельный ряд -->
+    <section class="models" id="models">
+        <div class="container">
+            <div class="section-header">
+                <a href="products.html" class="section-tag-link">Продукция</a>
+                <h2>Модельный ряд</h2>
+            </div>
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>УОГ-20</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/3Д УОГ/1.jpg" alt="УОГ-20" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">20 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 0,5 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-outline">Запросить КП</a>
+                </div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>УОГ-100</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/фото УОГ 100/IMG_20141109_121623.jpg" alt="УОГ-100" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">100 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 2 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-outline">Запросить КП</a>
+                </div>
+                <div class="model-card featured">
+                    <div class="model-header">
+                        <h3>УОГ-200</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/фото уог 200/20150802_174739.jpg" alt="УОГ-200" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">200 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 4 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-primary">Запросить КП</a>
+                </div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>УОГ-500</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/3Д УОГ/5.jpg" alt="УОГ-500" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">500 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 6 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-outline">Запросить КП</a>
+                </div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>УОГ-1500</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/УОГ-1500ВД/1.jpg" alt="УОГ-1500" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">1500 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 8 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-outline">Запросить КП</a>
+                </div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>УОГ-2500</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/3Д УОГ/10.jpg" alt="УОГ-2500" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">2500 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 10 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-outline">Запросить КП</a>
+                </div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3>УОГ-5000</h3>
+                    </div>
+                    <div class="model-image">
+                        <img src="reference/УОГ производство/УОГ 5000 готовая на площадке/5260698728849413433-1.jpg" alt="УОГ-5000" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 4rem; opacity: 0.3; color: white;\'>🏭</span>'">
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-row">
+                            <span class="spec-label">Производительность</span>
+                            <span class="spec-value">5000 нм³/час</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Давление</span>
+                            <span class="spec-value">до 16 Бар</span>
+                        </div>
+                    </div>
+                    <a href="#contacts" class="btn btn-outline">Запросить КП</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="products.html" class="btn btn-outline">Смотреть весь модельный ряд →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Расчёт</span>
+                <h2>Калькулятор стоимости</h2>
+            </div>
+            <div class="calculator-wrapper">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="calcCapacity">Производительность (нм³/час)</label>
+                        <input type="number" id="calcCapacity" value="200" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="calcH2S">Содержание H₂S (г/м³)</label>
+                        <input type="number" id="calcH2S" value="2" min="0.1" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="calcHours">Часы работы в год</label>
+                        <input type="number" id="calcHours" value="8760" min="1">
+                    </div>
+                    <button class="btn btn-primary btn-full" onclick="calculateCost()">Рассчитать стоимость</button>
+                    <p class="calculator-note">* Ориентировочная стоимость установки с учётом коэффициента 3</p>
+                </div>
+                <div class="calculator-results" id="calcResults">
+                    <div class="result-card">
+                        <div class="result-icon">💰</div>
+                        <div class="result-content">
+                            <span class="result-label">Ориентировочная стоимость УОГ</span>
+                            <span class="result-value" id="costUOG">—</span>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">⚡</div>
+                        <div class="result-content">
+                            <span class="result-label">Себестоимость очистки</span>
+                            <span class="result-value" id="operatingCost">—</span>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">🏭</div>
+                        <div class="result-content">
+                            <span class="result-label">Рекомендуемая модель</span>
+                            <span class="result-value" id="recommendedModel">—</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Производство -->
+    <section class="production" id="production">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Производство</span>
+                <h2>Производственная площадка</h2>
+            </div>
+            <div class="production-intro">
+                <p>Собственное производство позволяет контролировать качество на всех этапах — от раскроя металла до финальной сборки и испытаний установки.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160427_144827.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🏭</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160427_144844.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🔧</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160427_144904.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>⚙️</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160427_144913.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🏗️</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160427_144932.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🔩</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160427_144940.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>⚡</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160111_201300.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🏭</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160111_201315.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🔧</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160111_205157.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>⚙️</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160111_205204.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🏗️</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160111_205229.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🔩</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/IMG_20160111_205234.jpg" alt="Производство" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>⚡</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/УОГ подготовка площадки 20190708.jpg" alt="Подготовка площадки" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>📍</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/УОГ подготовка площадки2 20190708.jpg" alt="Подготовка площадки" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>📍</div>'">
+                </div>
+                <div class="gallery-item">
+                    <img src="reference/УОГ производство/обрезанная УОГ с торца.png" alt="УОГ вид с торца" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;opacity:0.3;\'>🏭</div>'">
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="production.html" class="btn btn-outline">Смотреть все фото производства →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Связь</span>
+                <h2>Контакты</h2>
+            </div>
+            <div class="contacts-wrapper">
+                <div class="contacts-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <a href="tel:+78312808146">+7 (831) 280-81-46</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <a href="mailto:info@sorbgaz.ru">info@sorbgaz.ru</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🌐</div>
+                        <div>
+                            <h4>Сайт</h4>
+                            <a href="https://www.sorbgas.ru" target="_blank">www.sorbgas.ru</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Производство</h4>
+                            <p>Россия</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h3>Оставить заявку</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                            <input type="tel" name="phone" placeholder="Телефон" required>
+                        </div>
+                        <input type="email" name="email" placeholder="E-mail" required>
+                        <input type="text" name="company" placeholder="Компания">
+                        <textarea name="message" placeholder="Сообщение" rows="4"></textarea>
+                        <button type="submit" class="btn btn-primary btn-full">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Sorb<span class="logo-accent">Gas</span></span>
+                    <p>Установки очистки газа от сероводорода</p>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">О технологии</a>
+                    <a href="products.html">Продукция</a>
+                    <a href="comparison.html">Сравнение</a>
+                    <a href="projects.html">Проекты</a>
+                    <a href="production.html">Производство</a>
+                    <a href="documentation.html">Документация</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SorbGas. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
