@@ -292,10 +292,15 @@ function calculateCost() {
     // Применяем коэффициент 3 (по требованию пользователя)
     estimatedPrice *= 3;
     
-    // Operating cost (себестоимость очистки)
-    const annualVolume = capacity * hours;
-    const operatingCostPerNm3 = 1.35; // руб/нм³
-    const annualOperatingCost = annualVolume * operatingCostPerNm3;
+    // Operating cost (себестоимость 1 нм³ очистки)
+    // Базовая себестоимость + зависимость от содержания H2S и часов работы
+    const baseOperatingCost = 0.5; // базовая стоимость руб/нм³
+    
+    // Коэффициент режима работы (чем меньше часов, тем выше удельные затраты на пуск/останов)
+    const modeFactor = hours < 4000 ? 1.3 : hours < 6000 ? 1.15 : 1.0;
+    
+    // Себестоимость зависит от содержания H2S и режима работы
+    const operatingCostPerNm3 = (baseOperatingCost + (h2s * 0.4)) * modeFactor;
     
     // Recommended model
     const model = getRecommendedModel(capacity);
@@ -311,15 +316,12 @@ function calculateCost() {
     };
     
     const formatOperatingCost = (num) => {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(1) + ' млн ₽/год';
-        }
-        return (num / 1000).toFixed(0) + ' тыс. ₽/год';
+        return num.toFixed(2) + ' ₽/нм³';
     };
     
     // Update results with animation
     animateValue('costUOG', formatCurrency(estimatedPrice));
-    animateValue('operatingCost', formatOperatingCost(annualOperatingCost));
+    animateValue('operatingCost', formatOperatingCost(operatingCostPerNm3));
     animateValue('recommendedModel', model);
 }
 
@@ -342,6 +344,67 @@ function animateValue(elementId, value) {
             element.style.opacity = '1';
         }, 100);
     }
+}
+
+// ===== Analysis Modal =====
+function openAnalysisModal() {
+    const modal = document.getElementById('analysisModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeAnalysisModal() {
+    const modal = document.getElementById('analysisModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modal on overlay click
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+        closeAnalysisModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeAnalysisModal();
+    }
+});
+
+// ===== Analysis Form =====
+const analysisForm = document.getElementById('analysisForm');
+if (analysisForm) {
+    analysisForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(analysisForm);
+        const data = {};
+        
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        
+        // Validate
+        if (!data.name || !data.phone || !data.email || !data.file) {
+            alert('Заполните обязательные поля');
+            return;
+        }
+        
+        // Show file name
+        const fileName = data.file.name || 'файл';
+        
+        // Success
+        alert(`Спасибо! Файл "${fileName}" отправлен. Мы свяжемся with вами в ближайшее время.`);
+        analysisForm.reset();
+        closeAnalysisModal();
+        console.log('Analysis form data:', data);
+    });
 }
 
 // ===== Contact Form =====
