@@ -235,6 +235,10 @@ window.addEventListener('resize', resize);
 const burgerMenu = document.querySelector('.burger-menu');
 const nav = document.querySelector('.nav');
 
+// Сброс меню при загрузке страницы
+if (nav) nav.classList.remove('active');
+if (burgerMenu) burgerMenu.classList.remove('active');
+
 if (burgerMenu) {
     burgerMenu.addEventListener('click', () => {
         nav.classList.toggle('active');
@@ -252,12 +256,22 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 // ===== Language Switcher =====
 const langSwitcher = document.querySelector('.lang-switcher');
-let currentLang = localStorage.getItem('language') || 'ru';
+
+// Sanitize and validate language value from localStorage
+function getSafeLanguage() {
+    const stored = localStorage.getItem('language');
+    const allowed = ['ru', 'en'];
+    // Validate: must be one of allowed values, or default to 'ru'
+    return (stored && allowed.includes(stored)) ? stored : 'ru';
+}
+
+let currentLang = getSafeLanguage();
 
 if (langSwitcher) {
     langSwitcher.textContent = currentLang === 'ru' ? 'EN' : 'RU';
     
     langSwitcher.addEventListener('click', () => {
+        // Only allow switching between 'ru' and 'en', no arbitrary values possible
         currentLang = currentLang === 'ru' ? 'en' : 'ru';
         localStorage.setItem('language', currentLang);
         langSwitcher.textContent = currentLang === 'ru' ? 'EN' : 'RU';
@@ -400,7 +414,7 @@ if (analysisForm) {
         const fileName = data.file.name || 'файл';
         
         // Success
-        alert(`Спасибо! Файл "${fileName}" отправлен. Мы свяжемся with вами в ближайшее время.`);
+        alert(`Спасибо! Файл "${fileName}" отправлен. Мы свяжемся с вами в ближайшее время.`);
         analysisForm.reset();
         closeAnalysisModal();
         console.log('Analysis form data:', data);

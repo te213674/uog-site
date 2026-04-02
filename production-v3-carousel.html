@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Производство — Вариант 3: Карусель | SorbGaz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .variants-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .variants-nav a {
+            padding: 10px 20px;
+            background: var(--color-bg-alt);
+            border-radius: 50px;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .variants-nav a.active {
+            background: var(--color-primary);
+            color: white;
+        }
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .carousel-main {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .carousel-main video {
+            width: 100%;
+            display: block;
+        }
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .carousel-thumb {
+            width: 80px;
+            height: 45px;
+            background: var(--color-bg-alt);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid transparent;
+        }
+        .carousel-thumb:hover {
+            transform: scale(1.1);
+        }
+        .carousel-thumb.active {
+            border-color: var(--color-primary);
+            background: white;
+        }
+        .carousel-thumb span {
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 4px;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 58, 82, 0.9);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .carousel-arrow:hover {
+            background: var(--color-primary);
+        }
+        .carousel-arrow.prev {
+            left: -60px;
+        }
+        .carousel-arrow.next {
+            right: -60px;
+        }
+        .carousel-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+        }
+        .carousel-counter {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <a href="tel:+78312808146">+7 (831) 280-81-46</a>
+                    <a href="mailto:info@sorbgaz.ru">info@sorbgaz.ru</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Sorb<span class="logo-accent">Gaz</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Вариант 3: Карусель</h1>
+            <p>Один плеер с переключением между видео</p>
+        </div>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <div class="variants-nav">
+                <a href="production-v1-inline.html">Вариант 1: Inline</a>
+                <a href="production-v2-grid.html">Вариант 2: Галерея</a>
+                <a href="production-v3-carousel.html" class="active">Вариант 3: Карусель</a>
+            </div>
+
+            <p class="carousel-title" id="videoTitle">🎬 Блок управления</p>
+            
+            <div class="carousel-container">
+                <button class="carousel-arrow prev" onclick="prevVideo()">←</button>
+                <button class="carousel-arrow next" onclick="nextVideo()">→</button>
+                
+                <div class="carousel-main">
+                    <video id="mainVideo" controls autoplay>
+                        <source src="УОГ видео/УОГ блок управления 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            
+            <p class="carousel-counter"><span id="currentNum">1</span> / <span id="totalNum">7</span></p>
+
+            <div class="carousel-nav">
+                <div class="carousel-thumb active" onclick="goToVideo(0)" title="Блок управления">
+                    <span>1</span>
+                </div>
+                <div class="carousel-thumb" onclick="goToVideo(1)" title="Вид внутри контейнеров">
+                    <span>2</span>
+                </div>
+                <div class="carousel-thumb" onclick="goToVideo(2)" title="Вид с контейнера">
+                    <span>3</span>
+                </div>
+                <div class="carousel-thumb" onclick="goToVideo(3)" title="Вид со стороны колонн">
+                    <span>4</span>
+                </div>
+                <div class="carousel-thumb" onclick="goToVideo(4)" title="Работа блока управления">
+                    <span>5</span>
+                </div>
+                <div class="carousel-thumb" onclick="goToVideo(5)" title="Работа табло">
+                    <span>6</span>
+                </div>
+                <div class="carousel-thumb" onclick="goToVideo(6)" title="Табло управления">
+                    <span>7</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="production.html" class="btn btn-primary btn-lg">← Вернуться к оригиналу</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 SorbGaz. Вариант 3 — Карусель</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const videos = [
+            { src: 'УОГ видео/УОГ блок управления 20200809.mp4', title: '🎬 Блок управления' },
+            { src: 'УОГ видео/УОГ вид внутри контейнеров 20200809.mp4', title: '🏭 Вид внутри контейнеров' },
+            { src: 'УОГ видео/УОГ вид с контейнера 20200809.mp4', title: '📦 Вид с контейнера' },
+            { src: 'УОГ видео/УОГ вид со стороны колонн 20200809.mp4', title: '⚙️ Вид со стороны колонн' },
+            { src: 'УОГ видео/УОГ работа блока управления 20200809.mp4', title: '🖥️ Работа блока управления' },
+            { src: 'УОГ видео/УОГ работа табло 20200809.mp4', title: '📊 Работа табло' },
+            { src: 'УОГ видео/УОГ табло управления 20200809.mp4', title: '🎛️ Табло управления' }
+        ];
+        
+        let currentIndex = 0;
+        
+        function goToVideo(index) {
+            currentIndex = index;
+            updateVideo();
+        }
+        
+        function prevVideo() {
+            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+            updateVideo();
+        }
+        
+        function nextVideo() {
+            currentIndex = (currentIndex + 1) % videos.length;
+            updateVideo();
+        }
+        
+        function updateVideo() {
+            const video = document.getElementById('mainVideo');
+            const title = document.getElementById('videoTitle');
+            const currentNum = document.getElementById('currentNum');
+            const thumbs = document.querySelectorAll('.carousel-thumb');
+            
+            video.querySelector('source').src = videos[currentIndex].src;
+            video.load();
+            title.textContent = videos[currentIndex].title;
+            currentNum.textContent = currentIndex + 1;
+            
+            thumbs.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === currentIndex);
+            });
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') prevVideo();
+            if (e.key === 'ArrowRight') nextVideo();
+        });
+    </script>
+</body>
+</html>

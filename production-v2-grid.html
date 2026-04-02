@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Производство — Вариант 2: Галерея | SorbGaz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .variants-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .variants-nav a {
+            padding: 10px 20px;
+            background: var(--color-bg-alt);
+            border-radius: 50px;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .variants-nav a.active {
+            background: var(--color-primary);
+            color: white;
+        }
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .video-thumb {
+            background: var(--color-bg-alt);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .video-thumb:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .video-thumb-preview {
+            aspect-ratio: 16/9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .video-thumb-preview::before {
+            content: '▶';
+            font-size: 2rem;
+            color: white;
+            background: rgba(26, 58, 82, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 4px;
+        }
+        .video-thumb-title {
+            padding: 16px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            max-width: 900px;
+            width: 100%;
+        }
+        .modal-content video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .modal-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <a href="tel:+78312808146">+7 (831) 280-81-46</a>
+                    <a href="mailto:info@sorbgaz.ru">info@sorbgaz.ru</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Sorb<span class="logo-accent">Gaz</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Вариант 2: Галерея</h1>
+            <p>Сетка превью — клик открывает видео в модальном окне</p>
+        </div>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <div class="variants-nav">
+                <a href="production-v1-inline.html">Вариант 1: Inline</a>
+                <a href="production-v2-grid.html" class="active">Вариант 2: Галерея</a>
+                <a href="production-v3-carousel.html">Вариант 3: Карусель</a>
+            </div>
+
+            <div class="video-gallery">
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ блок управления 20200809.mp4', 'Блок управления')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">🎬 Блок управления</div>
+                </div>
+                
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ вид внутри контейнеров 20200809.mp4', 'Вид внутри контейнеров')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">🏭 Вид внутри контейнеров</div>
+                </div>
+                
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ вид с контейнера 20200809.mp4', 'Вид с контейнера')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">📦 Вид с контейнера</div>
+                </div>
+                
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ вид со стороны колонн 20200809.mp4', 'Вид со стороны колонн')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">⚙️ Вид со стороны колонн</div>
+                </div>
+                
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ работа блока управления 20200809.mp4', 'Работа блока управления')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">🖥️ Работа блока управления</div>
+                </div>
+                
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ работа табло 20200809.mp4', 'Работа табло')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">📊 Работа табло</div>
+                </div>
+                
+                <div class="video-thumb" onclick="openVideo('УОГ видео/УОГ табло управления 20200809.mp4', 'Табло управления')">
+                    <div class="video-thumb-preview"></div>
+                    <div class="video-thumb-title">🎛️ Табло управления</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="production.html" class="btn btn-primary btn-lg">← Вернуться к оригиналу</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="videoModal" onclick="closeVideo(event)">
+        <button class="modal-close" onclick="closeVideoBtn()">×</button>
+        <div class="modal-content">
+            <p class="modal-title" id="modalTitle"></p>
+            <video id="modalVideo" controls autoplay>
+                <source id="modalSource" src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 SorbGaz. Вариант 2 — Галерея</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openVideo(src, title) {
+            document.getElementById('modalSource').src = src;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalVideo').load();
+            document.getElementById('videoModal').classList.add('active');
+        }
+        
+        function closeVideo(event) {
+            if (event.target.id === 'videoModal') {
+                closeVideoBtn();
+            }
+        }
+        
+        function closeVideoBtn() {
+            document.getElementById('modalVideo').pause();
+            document.getElementById('videoModal').classList.remove('active');
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeVideoBtn();
+        });
+    </script>
+</body>
+</html>

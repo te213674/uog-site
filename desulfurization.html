@@ -15,8 +15,44 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<!-- HEADER PLACEHOLDER -->
-<main>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <a href="tel:+78312808146">+7 (831) 280-81-46</a>
+                    <a href="mailto:info@sorbgaz.ru">info@sorbgaz.ru</a>
+                </div>
+                <div class="header-top-actions">
+                    <button class="lang-switcher">EN</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Sorb<span class="logo-accent">Gaz</span></span>
+                    </a>
+                </div>
+                <button class="burger-menu" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav">
+                    <a href="about.html" class="nav-link">технология</a>
+                    <a href="products.html" class="nav-link">Продукция</a>
+                    <a href="comparison.html" class="nav-link">Сравнение</a>
+                    <a href="projects.html" class="nav-link">Проекты</a>
+                    <a href="production.html" class="nav-link">Производство/Реализованные проекты</a>
+                    <a href="documentation.html" class="nav-link">Документация</a>
+                    <a href="index.html#contacts" class="nav-link">Контакты</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-page">
 
 <section class="hero-section">
   <div class="container">
@@ -28,8 +64,8 @@
       Очистка газов серы актуальна для нефтегазовых компаний, операторов биогазовых установок и владельцев полигонов ТБО. Содержание H₂S в сырьевом газе варьируется от сотен ppm до нескольких процентов — во всех случаях технология УОГ обеспечивает остаточную концентрацию менее 20 мг/нм³ (≈14 ppm).
     </p>
     <div class="hero-section__cta">
-      <a href="#contact" class="btn btn--primary">Получить коммерческое предложение</a>
-      <a href="#calculator" class="btn btn--secondary">Рассчитать стоимость очистки</a>
+      <a href="#contact" class="btn btn-primary">Получить коммерческое предложение</a>
+      <a href="#calculator" class="btn btn-secondary">Рассчитать стоимость очистки</a>
     </div>
   </div>
 </section>
@@ -59,8 +95,8 @@
       Метод эффективен при переменных нагрузках по H₂S — характерных для биогазовых установок и месторождений ПНГ с нестабильным составом газа. Установка автоматически адаптирует расход раствора к текущей концентрации сероводорода.
     </p>
     <div class="section__cta">
-      <a href="/products/" class="btn btn--primary">Посмотреть модельный ряд УОГ</a>
-      <a href="#contact" class="btn btn--outline">Запросить технический расчёт</a>
+      <a href="/products/" class="btn btn-primary">Посмотреть модельный ряд УОГ</a>
+      <a href="#contact" class="btn btn-outline">Запросить технический расчёт</a>
     </div>
   </div>
 </section>
@@ -85,8 +121,9 @@
       Установки УОГ для биогаза и свалочного газа работают в диапазоне производительности 50–2 500 нм³/час. Технология устойчива к высоким и переменным концентрациям H₂S, присутствию CO₂ и влаги — что критично именно для биогазовых объектов. Рабочий раствор не деградирует от CO₂ и не требует периодической замены.
     </p>
     <div class="section__cta">
-      <a href="#quiz" class="btn btn--primary">Подобрать установку для биогаза</a>
-      <a href="/projects/" class="btn btn--outline">Реализованные проекты</a>
+      <a href="biogas.html" class="btn btn-primary">Подобрать установку для биогаза</a>
+      <a href="landfill-gas.html" class="btn btn-outline">Очистка свалочного газа</a>
+      <a href="industrial-sulfur-gases.html" class="btn btn-outline">Очистка промышленных серосодержащих газов</a>
     </div>
   </div>
 </section>
@@ -141,8 +178,8 @@
       </tbody>
     </table>
     <div class="section__cta">
-      <a href="#quiz" class="btn btn--primary">Заполнить опросный лист</a>
-      <a href="/comparison/" class="btn btn--outline">Сравнить технологии очистки</a>
+      <a href="png.html" class="btn btn-primary">Очистка ПНГ</a>
+      <a href="landfill-gas.html" class="btn btn-outline">Дегазация/очистка свалочного газа</a>
     </div>
   </div>
 </section>
@@ -167,8 +204,8 @@
       Степень десульфуризации зависит от нескольких факторов: концентрации H₂S на входе, давления газа, температуры и расхода рабочего раствора. Система автоматического управления УОГ поддерживает заданную степень десульфуризации при изменении состава газа в диапазоне ±30% от проектного значения без вмешательства оператора.
     </p>
     <div class="section__cta">
-      <a href="/about/" class="btn btn--primary">Подробнее о технологии</a>
-      <a href="#contact" class="btn btn--outline">Получить консультацию инженера</a>
+      <a href="/about/" class="btn btn-primary">Подробнее о технологии</a>
+      <a href="#contact" class="btn btn-outline">Получить консультацию инженера</a>
     </div>
   </div>
 </section>
@@ -206,7 +243,7 @@
       </div>
     </div>
     <div class="section__cta section__cta--centered">
-      <a href="#contact" class="btn btn--primary btn--large">Получить коммерческое предложение</a>
+      <a href="#contact" class="btn btn-primary btn-lg">Получить коммерческое предложение</a>
     </div>
   </div>
 </section>
@@ -240,13 +277,32 @@
         <label for="message">Параметры газа (тип, производительность, содержание H₂S)</label>
         <textarea id="message" name="message" rows="4" placeholder="ПНГ, 500 нм³/час, H₂S 0,5%, давление 0,4 МПа..."></textarea>
       </div>
-      <button type="submit" class="btn btn--primary">Отправить запрос</button>
+      <button type="submit" class="btn btn-primary">Отправить запрос</button>
     </form>
   </div>
 </section>
 
 </main>
-<!-- FOOTER PLACEHOLDER -->
-<script src="js/main.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Sorb<span class="logo-accent">Gaz</span></span>
+                    <p>Установки очистки газа от сероводорода</p>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">технология</a>
+                    <a href="products.html">Продукция</a>
+                    <a href="index.html#contacts">Контакты</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SorbGaz. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

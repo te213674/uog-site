@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Производство — Вариант 1: Встроенные плееры | SorbGaz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .video-section {
+            margin-bottom: 40px;
+        }
+        .video-section h3 {
+            color: var(--color-primary);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        .video-wrapper {
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+        .video-note {
+            background: var(--color-bg-alt);
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .variants-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .variants-nav a {
+            padding: 10px 20px;
+            background: var(--color-bg-alt);
+            border-radius: 50px;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .variants-nav a.active {
+            background: var(--color-primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <a href="tel:+78312808146">+7 (831) 280-81-46</a>
+                    <a href="mailto:info@sorbgaz.ru">info@sorbgaz.ru</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Sorb<span class="logo-accent">Gaz</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Вариант 1: Встроенные плееры</h1>
+            <p>HTML5 видео плееры прямо на странице</p>
+        </div>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <div class="variants-nav">
+                <a href="production-v1-inline.html" class="active">Вариант 1: Inline</a>
+                <a href="production-v2-grid.html">Вариант 2: Галерея</a>
+                <a href="production-v3-carousel.html">Вариант 3: Карусель</a>
+            </div>
+            
+            <div class="video-note">
+                <strong>Все 7 видео отображаются на странице</strong> — посетитель может сразу выбрать и посмотреть
+            </div>
+
+            <div class="video-section">
+                <h3>🎬 Блок управления</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ блок управления 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>🏭 Вид внутри контейнеров</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ вид внутри контейнеров 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>📦 Вид с контейнера</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ вид с контейнера 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>⚙️ Вид со стороны колонн</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ вид со стороны колонн 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>🖥️ Работа блока управления</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ работа блока управления 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>📊 Работа табло</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ работа табло 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>🎛️ Табло управления</h3>
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="УОГ видео/УОГ табло управления 20200809.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="production.html" class="btn btn-primary btn-lg">← Вернуться к оригиналу</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 SorbGaz. Вариант 1 — Встроенные плееры</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
