@@ -1,0 +1,22 @@
+# robots.txt для B2B сайта SorbGaz
+User-agent: *
+Allow: /
+Disallow: /reference/
+Disallow: /УОГ видео/
+Disallow: /tmp_png.txt
+Disallow: /extract_docs.py
+Disallow: /parse_competitors.py
+Disallow: /Gas/
+Disallow: /Gaz/
+Disallow: /production-v1-inline.html
+Disallow: /production-v2-grid.html
+Disallow: /production-v3-carousel.html
+
+# Sitemap
+Sitemap: https://www.sorbgaz.ru/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Host
+Host: www.sorbgaz.ru
