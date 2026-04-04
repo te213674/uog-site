@@ -1,0 +1,34 @@
+======================================================================
+[SEO] COMPETITOR PARSER
+======================================================================
+
+----------------------------------------------------------------------
+[ANALYZING] GazSurf (GazSurf) (https://gazsurf.ru)
+----------------------------------------------------------------------
+  [PARSING] https://gazsurf.ru
+  [OK] «ГазСёрф» — инжиниринговая компания в нефтегазовой отрасли /
+  [PARSING] https://gazsurf.ru/about/
+  [PARSING] https://gazsurf.ru/catalog/gazoperekachivayushchie-agregaty/
+  [PARSING] https://gazsurf.ru/solutions/
+  [OK] Решения и оборудование / ГазСёрф
+  [PARSING] https://gazsurf.ru/projects/
+  [OK] Проекты / ГазСёрф
+
+[DONE] GazSurf (GazSurf): parsed 3/5 pages
+
+----------------------------------------------------------------------
+[ANALYZING] Grasys (Grasys) (https://www.grasys.ru)
+----------------------------------------------------------------------
+  [PARSING] https://www.grasys.ru
+  [OK] Грасис - производитель воздухо- и газоразделительных систем
+  [PARSING] https://www.grasys.ru/products/uglevodorodnye-ustanovki-podgotovki-gaza/ustanovki-seroochistki-gaza/helatnye-ustanovki-seroochistki-gaza/
+  [OK] Хелатные установки жидкофазного окисления (сероочистка газа)
+  [PARSING] https://www.grasys.ru/about/
+  [PARSING] https://www.grasys.ru/products/
+  [OK] Продукция НПК «Грасис» - газоразделительное оборудование, во
+
+[DONE] Grasys (Grasys): parsed 3/4 pages
+
+======================================================================
+[SAVED] Results: research/competitor-seo-data.json
+======================================================================
