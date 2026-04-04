@@ -27,13 +27,37 @@ function nextVideo() {
     updateVideo();
 }
 
+function loadVideo() {
+    const video = document.getElementById('mainVideo');
+    const placeholder = document.getElementById('videoPlaceholder');
+    if (!video) return;
+    
+    // Переносим src из data-src в src
+    const source = video.querySelector('source');
+    if (source && source.dataset.src) {
+        source.src = source.dataset.src;
+        video.load();
+    }
+    
+    // Скрываем плейсхолдер
+    if (placeholder) {
+        placeholder.style.display = 'none';
+    }
+}
+
 function updateVideo() {
     const video = document.getElementById('mainVideo');
     const title = document.getElementById('videoTitle');
     const currentNum = document.getElementById('currentNum');
     const thumbs = document.querySelectorAll('.carousel-thumb');
+    const placeholder = document.getElementById('videoPlaceholder');
     
     if (!video || !title || !currentNum) return;
+    
+    // Показываем плейсхолдер при смене видео
+    if (placeholder) {
+        placeholder.style.display = 'flex';
+    }
     
     video.querySelector('source').src = videos[currentIndex].src;
     video.load();
@@ -88,4 +112,53 @@ function calculateSavings() {
     };
     
     document.getElementById('savingsValue').textContent = formatCurrency(savings);
+}
+
+// ===== Калькулятор себестоимости 1 нм³ =====
+
+function calculateOperatingCost() {
+    const volume = parseFloat(document.getElementById('costVolume').value); // нм³/час
+    const h2s = parseFloat(document.getElementById('costH2S').value); // г/м³
+    const elecPrice = parseFloat(document.getElementById('costElectricity').value); // ₽/кВт·ч
+    
+    if (!volume || !h2s || !elecPrice) {
+        alert('Введите корректные значения');
+        return;
+    }
+    
+    // Константы
+    const SOLUTION_PRICE = 98; // ₽/кг
+    const SOLUTION_LOSS = 38; // кг/сут (потери раствора)
+    const POWER = 150; // кВт
+    const STAFF = 2; // человек
+    const SALARY = 30000; // ₽/мес
+    
+    // Расчёты за месяц (30 дней)
+    const monthlyHours = 24 * 30; // 720 часов
+    const monthlyVolume = volume * monthlyHours; // нм³/мес
+    
+    // 1. Раствор: пропорционально содержанию H2S
+    const solutionDaily = SOLUTION_LOSS * (h2s / 2); // кг/сут (пропорция от 2 г/м³)
+    const solutionMonthlyCost = solutionDaily * 30 * SOLUTION_PRICE;
+    const solutionPerNm3 = solutionMonthlyCost / monthlyVolume;
+    
+    // 2. Электричество
+    const elecMonthly = POWER * monthlyHours; // кВт·ч/мес
+    const elecMonthlyCost = elecMonthly * elecPrice;
+    const elecPerNm3 = elecMonthlyCost / monthlyVolume;
+    
+    // 3. Зарплата
+    const salaryMonthly = STAFF * SALARY;
+    const salaryPerNm3 = salaryMonthly / monthlyVolume;
+    
+    // Итого
+    const totalPerNm3 = solutionPerNm3 + elecPerNm3 + salaryPerNm3;
+    
+    const formatPerNm3 = (num) => num.toFixed(1) + ' ₽';
+    
+    // Вывод результатов
+    document.getElementById('costPerNm3').textContent = formatPerNm3(totalPerNm3);
+    document.getElementById('costSolution').textContent = formatPerNm3(solutionPerNm3);
+    document.getElementById('costElec').textContent = formatPerNm3(elecPerNm3);
+    document.getElementById('costSalary').textContent = formatPerNm3(salaryPerNm3);
 }
