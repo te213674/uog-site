@@ -55,14 +55,11 @@ yarn-error.log*
 !.vscode/launch.json
 
 # Тяжёлые файлы (не заливать на GitHub)
-УОГ видео/
 reference/
 *.doc
 *.docx
 *.xls
 *.xlsx
-Gas/
-Gaz/
 parse_competitors.py
 extract_docs.py
 tmp_png.txt
