@@ -2262,4 +2262,16 @@ p {
     .contact-form-wrapper {
         padding: 24px;
     }
+    
+    .calculator-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .calculator-form {
+        order: 1;
+    }
+    
+    .calculator-results {
+        order: 2;
+    }
 }
