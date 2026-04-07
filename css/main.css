@@ -2067,6 +2067,17 @@ p {
     line-height: 1.7;
 }
 
+/* ===== Table Wrapper for Horizontal Scroll ===== */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+}
+
+.table-wrapper .comparison-table {
+    min-width: 700px;
+}
+
 /* ===== Comparison Table Extensions ===== */
 .comparison-table .highlight-row {
     background: rgba(26, 58, 82, 0.05);
