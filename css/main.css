@@ -2150,10 +2150,6 @@ p {
         margin-bottom: 40px;
     }
     
-    .calculator-results {
-        order: -1;
-    }
-    
     .hero-stats {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
