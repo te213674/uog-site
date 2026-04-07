@@ -2184,6 +2184,8 @@ p {
         transition: var(--transition);
         box-shadow: var(--shadow-md);
         white-space: nowrap;
+        width: fit-content;
+        max-width: calc(100vw - 32px);
     }
     
     .nav.active {
