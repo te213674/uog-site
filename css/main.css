@@ -2165,8 +2165,14 @@ p {
         display: none;
     }
     
-    .burger-menu {
-        display: flex;
+    .header .burger-menu {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
     
     .nav {
