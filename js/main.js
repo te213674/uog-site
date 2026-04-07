@@ -231,25 +231,37 @@ window.addEventListener('resize', resize);
 }
 
 // ===== Mobile Menu =====
-const burgerMenu = document.querySelector('.burger-menu');
-const nav = document.querySelector('.nav');
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.nav');
 
-// Сброс меню при загрузке страницы
-if (nav) nav.classList.remove('active');
-if (burgerMenu) burgerMenu.classList.remove('active');
+    // Сброс меню при загрузке страницы
+    if (nav) nav.classList.remove('active');
+    if (burgerMenu) burgerMenu.classList.remove('active');
 
-if (burgerMenu) {
-    burgerMenu.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        burgerMenu.classList.toggle('active');
+    if (burgerMenu && nav) {
+        burgerMenu.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        });
+    }
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav) nav.classList.remove('active');
+            if (burgerMenu) burgerMenu.classList.remove('active');
+        });
     });
-}
-
-// Close menu on link click
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        nav.classList.remove('active');
-        burgerMenu.classList.remove('active');
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (nav && nav.classList.contains('active')) {
+            if (!nav.contains(e.target) && !burgerMenu.contains(e.target)) {
+                nav.classList.remove('active');
+                burgerMenu.classList.remove('active');
+            }
+        }
     });
 });
 
