@@ -2173,7 +2173,7 @@ p {
         position: fixed;
         top: 70px;
         right: 16px;
-        transform: translateY(-100%);
+        transform: translateX(100%);
         background: white;
         flex-direction: column;
         padding: 24px;
@@ -2189,7 +2189,7 @@ p {
     }
     
     .nav.active {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
         visibility: visible;
         z-index: 1001;
