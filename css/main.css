@@ -197,18 +197,6 @@ p {
     background: var(--color-primary);
     color: white;
 }
-
-.btn-outline-accent {
-    background: transparent;
-    color: var(--color-accent);
-    border: 2px solid var(--color-accent);
-}
-
-.btn-outline-accent:hover {
-    background: var(--color-accent);
-    color: white;
-}
-
 .btn-full {
     width: 100%;
 }
@@ -956,6 +944,40 @@ p {
     font-weight: 700;
     color: var(--color-primary);
     font-family: var(--font-mono);
+}
+
+/* ===== Cost Breakdown Cards ===== */
+.result-card.cost-breakdown {
+    padding: 18px 24px;
+}
+
+.result-card.cost-breakdown .result-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    background: var(--color-bg-alt);
+}
+
+.result-card.cost-breakdown .result-value {
+    font-size: 1.25rem;
+}
+
+.result-card.cost-breakdown.total {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-color: var(--color-primary);
+}
+
+.result-card.cost-breakdown.total .result-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.result-card.cost-breakdown.total .result-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.result-card.cost-breakdown.total .result-value {
+    color: white;
+    font-size: 1.75rem;
 }
 
 /* ===== Analysis Card ===== */

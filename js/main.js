@@ -1,8 +1,6 @@
 // ===== 3D Molecule Animation (H2S - Hydrogen Sulfide) =====
 const canvas = document.getElementById('moleculeCanvas');
-if (!canvas) {
-    console.log('Canvas not found - skipping animation');
-} else {
+if (canvas) {
 const ctx = canvas.getContext('2d');
 
 let width, height;
@@ -230,6 +228,7 @@ function initMolecule() {
 }
 
 window.addEventListener('resize', resize);
+}
 
 // ===== Mobile Menu =====
 const burgerMenu = document.querySelector('.burger-menu');
@@ -280,62 +279,118 @@ if (langSwitcher) {
 
 // ===== Calculator =====
 function calculateCost() {
-    const capacity = parseFloat(document.getElementById('calcCapacity').value);
-    const h2s = parseFloat(document.getElementById('calcH2S').value);
-    const hours = parseFloat(document.getElementById('calcHours').value);
+    console.log('calculateCost вызвана');
     
-    if (!capacity || !h2s || !hours) {
+    const capacity = parseFloat(document.getElementById('calcCapacity').value); // нм³/час
+    const h2s = parseFloat(document.getElementById('calcH2S').value); // г/м³
+    const hours = parseFloat(document.getElementById('calcHours').value); // часов в год
+    const elecPrice = parseFloat(document.getElementById('calcElecPrice').value); // ₽/кВт·ч
+    const salary = parseFloat(document.getElementById('calcSalary').value); // ₽/мес
+    
+    console.log('capacity:', capacity, 'h2s:', h2s, 'hours:', hours, 'elecPrice:', elecPrice, 'salary:', salary);
+    
+    if (!capacity || !h2s || !hours || isNaN(elecPrice) || isNaN(salary)) {
         alert('Введите корректные значения');
+        console.log('Ошибка валидации');
         return;
     }
     
-    // Base price calculation (ориентировочная стоимость базовой установки)
-    // УОГ-20: ~2 млн руб (базовая цена)
-    // Коэффициент масштабирования от производительности
-    const basePrice = 2000000; // 2 млн руб за УОГ-20
-    const baseCapacity = 20;
+    // ===== СТОИМОСТЬ УСТАНОВКИ =====
+    // Матрица цен (базовые цены из Excel)
+    const priceMatrix = [
+        { cap: 20, price: 2000000 },
+        { cap: 100, price: 3500000 },
+        { cap: 200, price: 4500000 },
+        { cap: 500, price: 7000000 },
+        { cap: 1000, price: 11000000 },
+        { cap: 1500, price: 14000000 },
+        { cap: 2500, price: 19000000 },
+        { cap: 5000, price: 32000000 }
+    ];
+
+    // Линейная интерполяция для базовой цены
+    let basePrice = 0;
+    if (capacity <= priceMatrix[0].cap) {
+        basePrice = priceMatrix[0].price;
+    } else if (capacity >= priceMatrix[priceMatrix.length - 1].cap) {
+        // Экстраполяция для больших объемов
+        const last = priceMatrix[priceMatrix.length - 1];
+        const prev = priceMatrix[priceMatrix.length - 2];
+        const slope = (last.price - prev.price) / (last.cap - prev.cap);
+        basePrice = last.price + slope * (capacity - last.cap);
+    } else {
+        for (let i = 0; i < priceMatrix.length - 1; i++) {
+            if (capacity >= priceMatrix[i].cap && capacity <= priceMatrix[i + 1].cap) {
+                const p1 = priceMatrix[i];
+                const p2 = priceMatrix[i + 1];
+                const fraction = (capacity - p1.cap) / (p2.cap - p1.cap);
+                basePrice = p1.price + fraction * (p2.price - p1.price);
+                break;
+            }
+        }
+    }
+
+    // Коэффициент H2S (линейная зависимость)
+    const h2sFactor = 1 + (h2s / 10);
+
+    // Итоговая стоимость (базовая * коэфф H2S * 6 (текущие цены))
+    const estimatedPrice = basePrice * h2sFactor * 6;
     
-    // Расчёт стоимости на основе производительности
-    const capacityFactor = Math.pow(capacity / baseCapacity, 0.7); // economies of scale
-    let estimatedPrice = basePrice * capacityFactor;
+    // ===== СЕБЕСТОИМОСТЬ 1 нм³ =====
+    // Константы
+    const SOLUTION_PRICE = 80; // ₽/кг (фиксированная скрытая цена раствора)
+    const STAFF = 2; // человек
     
-    // Корректировка по содержанию H2S
-    const h2sFactor = 1 + (h2s - 0.5) * 0.1;
-    estimatedPrice *= h2sFactor;
+    // 1. РАСТВОР (реагент)
+    // Расход на реакцию: 2.5 кг раствора на 1 кг серы
+    // Сера (кг/ч) = Объем (нм3/ч) * H2S (г/нм3) / 1000
+    const sulfurPerHour = (capacity * h2s) / 1000;
+    const solutionForReactionPerHour = sulfurPerHour * 2.5;
     
-    // Применяем коэффициент 3 (по требованию пользователя)
-    estimatedPrice *= 3;
+    // Расход на унос: 0.01 кг на 1 нм3 газа
+    const solutionCarryoverPerHour = capacity * 0.01;
     
-    // Operating cost (себестоимость 1 нм³ очистки)
-    // Базовая себестоимость + зависимость от содержания H2S и часов работы
-    const baseOperatingCost = 0.5; // базовая стоимость руб/нм³
+    const totalSolutionPerHour = solutionForReactionPerHour + solutionCarryoverPerHour;
+    const solutionCostPerHour = totalSolutionPerHour * SOLUTION_PRICE;
+    const solutionPerNm3 = solutionCostPerHour / capacity;
     
-    // Коэффициент режима работы (чем меньше часов, тем выше удельные затраты на пуск/останов)
-    const modeFactor = hours < 4000 ? 1.3 : hours < 6000 ? 1.15 : 1.0;
+    // 2. ЭЛЕКТРИЧЕСТВО
+    // Линейная зависимость мощности насосов от объема (0.034 кВт на 1 нм3/ч)
+    // Для 500 нм3/ч это даст 17 кВт
+    const POWER_PER_NM3 = 0.034;
+    const power = capacity * POWER_PER_NM3; // кВт
     
-    // Себестоимость зависит от содержания H2S и режима работы
-    const operatingCostPerNm3 = (baseOperatingCost + (h2s * 0.4)) * modeFactor;
+    const elecCostPerHour = power * elecPrice;
+    const elecPerNm3 = elecCostPerHour / capacity;
     
-    // Recommended model
+    // 3. ЗАРПЛАТА
+    const salaryMonthly = STAFF * salary;
+    // Считаем стоимость зарплаты на 1 нм3 исходя из среднемесячной выработки
+    const monthlyHours = hours / 12;
+    const monthlyVolume = capacity * monthlyHours;
+    const salaryPerNm3 = salaryMonthly / monthlyVolume;
+    
+    // ИТОГО
+    const totalPerNm3 = solutionPerNm3 + elecPerNm3 + salaryPerNm3;
+    
+    // Рекомендуемая модель
     const model = getRecommendedModel(capacity);
     
-    // Format functions
+    // Формат вывода
     const formatCurrency = (num) => {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(1) + ' млн ₽';
-        } else if (num >= 1000) {
-            return (num / 1000).toFixed(0) + ' тыс. ₽';
-        }
+        if (num >= 1000000) return (num / 1000000).toFixed(1) + ' млн ₽';
+        else if (num >= 1000) return (num / 1000).toFixed(0) + ' тыс. ₽';
         return num.toFixed(0) + ' ₽';
     };
     
-    const formatOperatingCost = (num) => {
-        return num.toFixed(2) + ' ₽/нм³';
-    };
+    const formatPerNm3 = (num) => num.toFixed(2) + ' ₽/нм³';
     
-    // Update results with animation
+    // Обновляем результаты
     animateValue('costUOG', formatCurrency(estimatedPrice));
-    animateValue('operatingCost', formatOperatingCost(operatingCostPerNm3));
+    animateValue('costSolution', formatPerNm3(solutionPerNm3));
+    animateValue('costElec', formatPerNm3(elecPerNm3));
+    animateValue('costSalary', formatPerNm3(salaryPerNm3));
+    animateValue('operatingCost', formatPerNm3(totalPerNm3));
     animateValue('recommendedModel', model);
 }
 
@@ -511,8 +566,6 @@ document.querySelectorAll('.model-card, .project-card, .process-step, .result-ca
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
-    initMolecule();
-    
     // Calculate default values
     setTimeout(() => {
         calculateCost();
@@ -522,4 +575,3 @@ document.addEventListener('DOMContentLoaded', () => {
 // Console info
 console.log('%c SorbGaz UOG Website', 'color: #06b6d4; font-size: 20px; font-weight: bold;');
 console.log('%c Contact: +7 (831) 280-81-46 | www.sorbgaz.ru', 'color: #94a3b8; font-size: 12px;');
-}

@@ -1,4 +1,3 @@
-# Windows
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
@@ -55,7 +54,6 @@ yarn-error.log*
 !.vscode/launch.json
 
 # Тяжёлые файлы (не заливать на GitHub)
-reference/
 *.doc
 *.docx
 *.xls
